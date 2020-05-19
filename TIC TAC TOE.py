@@ -1,5 +1,5 @@
 import random
-#Function for calculation of VICTORY in gameS
+#Function for Calculation of VICTORY in Game
 def get1(a,i,j,count):
     if count%2==0:
         s='X'
