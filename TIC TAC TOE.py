@@ -1,4 +1,19 @@
 import random
+# Function to check whether given input is valid or not
+def check(a,d):
+    l=int(input())
+    
+    if not(l>=1 and l<=9):
+        return "Fail"
+    for i,j in d.items():
+            if i==l:
+                t=int(j[0])
+                s=int(j[1])
+    if a[t][s]=="X" or a[t][s]=="O":
+        return "Fail"
+    return l
+       
+    
 #Function for Calculation of VICTORY in Game
 def get1(a,i,j,count):
     if count%2==0:
@@ -161,11 +176,16 @@ def get(a,Muthu,Senthil,count):
         print("please enter the choice for the position(p1):")
     elif Senthil=='p1':
         print("please enter the choice for the position(p1):")
-    l=int(input())
+    H=check(a,d)
+    if H=="Fail":
+        print("Enter the correct position:")
+        H=check(a,d)
     for i,j in d.items():
-        if i==l:
-            t=int(j[0])
-            s=int(j[1])
+            if i==H:
+                t=int(j[0])
+                s=int(j[1])
+    
+    
     i,j=t,s
     a[i][j]='X'
     for i in range(3):
@@ -175,6 +195,10 @@ def get(a,Muthu,Senthil,count):
              print(end="___")
              print(end="|")
         print()
+    for i,j in d.items():
+        if i==H:
+            t=int(j[0])
+            s=int(j[1])
     i,j=t,s
     W=get1(a,i,j,count)
     if W==1:
@@ -189,11 +213,14 @@ def get(a,Muthu,Senthil,count):
         print("please enter the choice for the position(p2):")
     else:
         print("please enter the choice for the position(p2):")
-    f=int(input())
+    H=check(a,d)
+    if H=="Fail":
+        print("Enter the correct position:")
+        H=check(a,d)
     for i,j in d.items():
-        if i==f:
-            t=int(j[0])
-            s=int(j[1])
+            if i==H:
+                t=int(j[0])
+                s=int(j[1])
     i,j=t,s
     a[i][j]='O'
     for i in range(3):
